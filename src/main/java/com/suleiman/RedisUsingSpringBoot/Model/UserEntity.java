@@ -1,22 +1,25 @@
 package com.suleiman.RedisUsingSpringBoot.Model;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
-public class User implements Serializable {
+@RedisHash("UserEntity")
+public class UserEntity implements Serializable {
+    @Id
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private LocalDate dob;
 
-    public User() {
+    public UserEntity() {
     }
 
-    public User(Long id, String firstName, String lastName, String email, LocalDate dob) {
+    public UserEntity(Long id, String firstName, String lastName, String email, LocalDate dob) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

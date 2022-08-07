@@ -6,18 +6,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+import javax.annotation.PostConstruct;
+
 @Configuration
-@EnableCaching
+@EnableRedisRepositories
 public class RedisConfig {
 
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
-      RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-      redisStandaloneConfiguration.setHostName("127.0.0.1");
-      redisStandaloneConfiguration.setPort(6379);
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
+        redisStandaloneConfiguration.setHostName("127.0.0.1");
+        redisStandaloneConfiguration.setPort(6379);
 //      redisStandaloneConfiguration.setPassword("password");
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
         return jedisConnectionFactory;
@@ -35,6 +38,5 @@ public class RedisConfig {
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
-
 
 }

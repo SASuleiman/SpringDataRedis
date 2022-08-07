@@ -1,15 +1,16 @@
 package com.suleiman.RedisUsingSpringBoot.Service;
 
-import com.suleiman.RedisUsingSpringBoot.Model.User;
+import com.suleiman.RedisUsingSpringBoot.Model.UserEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
-    boolean saveUser(User user);
+    boolean saveUser(UserEntity userEntity);
 
-    List<User> fetchAllUsers();
+    List<UserEntity> fetchAllUsers();
 
-    User fetchUserById(Long id);
+    UserEntity fetchUserById(Long id);
 
     boolean deleteUserById(Long id);
 

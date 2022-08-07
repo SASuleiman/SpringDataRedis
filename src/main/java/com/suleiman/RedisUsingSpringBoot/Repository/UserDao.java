@@ -1,15 +1,15 @@
 package com.suleiman.RedisUsingSpringBoot.Repository;
 
-import com.suleiman.RedisUsingSpringBoot.Model.User;
+import com.suleiman.RedisUsingSpringBoot.Model.UserEntity;
 
 import java.util.List;
 
 public interface UserDao {
-    boolean saveUser(User user);
+    boolean saveUser(UserEntity userEntity);
 
-    List<User> getAllUsers();
+    List<UserEntity> getAllUsers();
 
-    User getUserById(Long id);
+    UserEntity getUserById(Long id);
 
     boolean deleteUserById(Long id);
 }
